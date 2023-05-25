@@ -91,6 +91,8 @@ const createBoard = () => {
 createBoard()
 //flipCard function
 function flipCard(e) {
+  let sound3 = new Audio('sound/s6.wav')
+  sound3.play()
   let cardId = e.target.getAttribute('data-id')
   fruitsArray[cardId]
   chosenArray.push(fruitsArray[cardId].name)
