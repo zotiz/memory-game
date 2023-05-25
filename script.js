@@ -95,9 +95,7 @@ function flipCard(e) {
   fruitsArray[cardId]
   chosenArray.push(fruitsArray[cardId].name)
   chosenArrayId.push(cardId)
-
   e.target.setAttribute('src', fruitsArray[cardId].img)
-
   //
   if (chosenArray.length == 2) {
     setTimeout(checkMatch, 700)
@@ -111,6 +109,10 @@ const checkMatch = () => {
   const cards = document.querySelectorAll('img')
   if (optionOneId != optionTwoId) {
     if (chosenArray[0] == chosenArray[1]) {
+      //add sound
+      let sound1 = new Audio('sound/s1.wav')
+      sound1.play()
+      // add text
       result.innerText = 'You found a match!'
       result.setAttribute(
         'class',
@@ -126,6 +128,9 @@ const checkMatch = () => {
       cards[optionTwoId].removeEventListener('click', flipCard)
       cardsWonArray.push(chosenArray)
     } else {
+      //add sound
+      let sound2 = new Audio('sound/s4.wav')
+      sound2.play()
       cards[optionOneId].setAttribute('src', 'image/blank.png')
       cards[optionTwoId].setAttribute('src', 'image/blank.png')
     }
@@ -136,19 +141,20 @@ const checkMatch = () => {
   score.innerText = 'Score: ' + cardsWonArray.length
   chosenArray = []
   chosenArrayId = []
-  console.log(cardsWonArray)
-  console.log(chosenArrayId)
-  console.log(chosenArray)
 
   if (cardsWonArray.length == fruitsArray.length / 2) {
     score.innerText = 'Congratulation!'
     result.innerText = 'Congratulation!'
+    //add sound
+    let sound2 = new Audio('sound/s5.wav')
+    sound2.play()
     result.style.fontStyle = 'cursive'
     result.setAttribute('class', 'result animate__heartBeat animate__infinite')
     setTimeout(() => {
       result.innerText = ''
+      score.innerText = ''
       result.setAttribute('class', '')
-    }, 2000)
+    }, 5000)
   }
 }
 function playAgain() {
