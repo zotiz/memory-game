@@ -129,8 +129,9 @@ button{
   transform: scale(1.05);
 }
 a{
-  color:#fff;
+  color:#8d8989;
   font-style: none;
+  font-size:12px
 }
 i{
   color:#64bcf6;
